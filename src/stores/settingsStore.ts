@@ -594,6 +594,7 @@ export interface SettingsState
   setCloudTranscriptionMode: (value: string) => void;
   setCleanupCloudMode: (value: string) => void;
   setCleanupCloudBaseUrl: (value: string) => void;
+  setCustomTranscriptionPrompt: (value: string) => void;
   setCustomDictionary: (words: string[]) => void;
   updateCustomDictionary: (changes: { add?: string[]; remove?: string[] }) => void;
   applyCustomDictionaryFromExternal: (words: string[]) => void;
@@ -955,6 +956,7 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
   cortiEnvironment: readString("cortiEnvironment", "us"),
   cortiTenant: readString("cortiTenant", "base"),
   customDictionary: readStringArray("customDictionary", []),
+  customTranscriptionPrompt: readString("customTranscriptionPrompt", ""),
   snippets: (() => {
     try {
       const parsed = JSON.parse(readString("snippets", "[]"));
@@ -1357,6 +1359,7 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
   setCleanupCloudMode: createStringSetter("cleanupCloudMode"),
   setCleanupCloudBaseUrl: createStringSetter("cleanupCloudBaseUrl"),
   setAssemblyAiStreaming: createBooleanSetter("assemblyAiStreaming"),
+  setCustomTranscriptionPrompt: createStringSetter("customTranscriptionPrompt"),
   setAutoGenerateNoteTitle: createBooleanSetter("autoGenerateNoteTitle"),
   setUseCleanupModel: createBooleanSetter("useCleanupModel"),
   setUseDictationAgent: createBooleanSetter("useDictationAgent"),
@@ -1818,6 +1821,8 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
       s.setCloudTranscriptionBaseUrl(settings.cloudTranscriptionBaseUrl);
     if (settings.cloudTranscriptionMode !== undefined)
       s.setCloudTranscriptionMode(settings.cloudTranscriptionMode);
+    if (settings.customTranscriptionPrompt !== undefined)
+      s.setCustomTranscriptionPrompt(settings.customTranscriptionPrompt);
     if (settings.customDictionary !== undefined) s.setCustomDictionary(settings.customDictionary);
     if (settings.snippets !== undefined) s.setSnippets(settings.snippets);
     if (settings.assemblyAiStreaming !== undefined)
