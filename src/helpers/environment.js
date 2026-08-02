@@ -456,7 +456,7 @@ class EnvironmentManager {
   }
 
   getFloatingIconAutoHide() {
-    return this._getKey("FLOATING_ICON_AUTO_HIDE") === "true";
+    return this._getKey("FLOATING_ICON_AUTO_HIDE") !== "false";
   }
 
   saveFloatingIconAutoHide(enabled) {

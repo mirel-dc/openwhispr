@@ -31,7 +31,7 @@ class WindowManager {
     this._updateNotificationDismissed = false;
     this.notificationPrefs = {
       notificationsEnabled: true,
-      notifyMeetingDetection: true,
+      notifyMeetingDetection: false,
       notifyCalendarReminders: true,
       notifyUpdates: true,
     };
@@ -43,7 +43,7 @@ class WindowManager {
     this.macCompoundPushState = null;
     this.winPushState = null;
     this._cachedActivationMode = "tap";
-    this._floatingIconAutoHide = false;
+    this._floatingIconAutoHide = true;
     this._agentAnimationState = null;
     this._panelStartPosition = "bottom-right";
     this._isDictatingToggle = false;

@@ -37,7 +37,7 @@ class MeetingDetectionEngine {
     this.windowManager = windowManager;
     this.databaseManager = databaseManager;
     this.activeDetections = new Map();
-    this.preferences = { processDetection: true, audioDetection: true };
+    this.preferences = { processDetection: true, audioDetection: false };
     this._userRecording = false;
     this._meetingModeActive = false;
     this._notificationQueue = [];

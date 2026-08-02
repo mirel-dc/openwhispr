@@ -1034,10 +1034,10 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
   saveDiscardedTranscriptions: readBoolean("saveDiscardedTranscriptions", false),
   audioCuesEnabled: readBoolean("audioCuesEnabled", true),
   pauseMediaOnDictation: readBoolean("pauseMediaOnDictation", false),
-  floatingIconAutoHide: readBoolean("floatingIconAutoHide", false),
+  floatingIconAutoHide: readBoolean("floatingIconAutoHide", true),
   startMinimized: readBoolean("startMinimized", false),
   notificationsEnabled: readBoolean("notificationsEnabled", true),
-  notifyMeetingDetection: readBoolean("notifyMeetingDetection", true),
+  notifyMeetingDetection: readBoolean("notifyMeetingDetection", false),
   notifyCalendarReminders: readBoolean("notifyCalendarReminders", true),
   notifyUpdates: readBoolean("notifyUpdates", true),
   ...(() => {
