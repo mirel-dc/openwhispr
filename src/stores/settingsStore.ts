@@ -51,6 +51,7 @@ import type {
 import type { Snippet } from "../utils/snippets";
 import type { EnterpriseSetupMode } from "../types/enterpriseIdentity";
 import { getManagedScopeResolution } from "./enterpriseIdentityStore";
+import { DEFAULT_TRANSCRIPTION_PROMPT } from "../config/transcriptionPrompts";
 
 let _ReasoningService: typeof import("../services/ReasoningService").default | null = null;
 
@@ -1235,7 +1236,7 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
   cortiEnvironment: readString("cortiEnvironment", "us"),
   cortiTenant: readString("cortiTenant", "base"),
   customDictionary: readStringArray("customDictionary", []),
-  customTranscriptionPrompt: readString("customTranscriptionPrompt", ""),
+  customTranscriptionPrompt: readString("customTranscriptionPrompt", DEFAULT_TRANSCRIPTION_PROMPT),
   snippets: (() => {
     try {
       const parsed = JSON.parse(readString("snippets", "[]"));

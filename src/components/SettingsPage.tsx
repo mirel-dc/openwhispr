@@ -144,6 +144,7 @@ import ProfileSection from "./settings/ProfileSection";
 import { formatAmount } from "../utils/formatAmount";
 import { getTranscriptionProvider } from "../models/ModelRegistry";
 import { supportsLiveTranscriptionPreview } from "../utils/transcriptionPreview";
+import { TRANSCRIPTION_PROMPT_PRESETS } from "../config/transcriptionPrompts";
 
 /** Estimate Whisper token count — CJK chars ≈ 2.2 tokens, Cyrillic ≈ 0.5, Latin ≈ 0.25 */
 function estimateTokens(text: string): number {
@@ -167,55 +168,6 @@ function estimateTokens(text: string): number {
 
 /** ~half of Whisper's 224-token initial_prompt window, leaving room for Custom Dictionary */
 const TOKEN_BUDGET = 112;
-
-const TRANSCRIPTION_PROMPT_PRESETS: Record<string, { label: string; prompt: string }> = {
-  en: {
-    label: "English",
-    prompt:
-      'Hello! How are you? He said: "Let\'s do this today — while we have time." Of course, it\'s not that simple.',
-  },
-  es: {
-    label: "Español",
-    prompt:
-      '¡Hola! ¿Cómo estás? Él dijo: "Hagámoslo hoy — mientras tengamos tiempo." Claro, no es tan sencillo.',
-  },
-  fr: {
-    label: "Français",
-    prompt:
-      "Bonjour ! Comment allez-vous ? Il a dit : « Faisons-le aujourd'hui — tant qu'on a le temps. » Ce n'est pas si simple.",
-  },
-  de: {
-    label: "Deutsch",
-    prompt:
-      'Hallo! Wie geht es Ihnen? Er sagte: „Machen wir es heute — solange wir Zeit haben." So einfach ist es nicht.',
-  },
-  pt: {
-    label: "Português",
-    prompt:
-      'Olá! Como você está? Ele disse: "Vamos fazer isso hoje — enquanto temos tempo." Não é tão simples.',
-  },
-  it: {
-    label: "Italiano",
-    prompt:
-      'Ciao! Come stai? Ha detto: "Facciamolo oggi — finché abbiamo tempo." Non è così semplice.',
-  },
-  ru: {
-    label: "Русский",
-    prompt: 'Привет! Как дела? Он сказал: «Сделаем это сегодня — пока есть время». Конечно, не всё так просто; нужно учесть погоду.',
-  },
-  ja: {
-    label: "日本語",
-    prompt: 'こんにちは！元気ですか？「今日やりましょう。」もちろん、簡単ではない。',
-  },
-  "zh-CN": {
-    label: "中文（简体）",
-    prompt: '你好！你怎么样？他说："今天就做吧。"当然，事情没那么简单。',
-  },
-  "zh-TW": {
-    label: "中文（繁體）",
-    prompt: '你好！你怎麼樣？他說：「今天就做吧。」當然，事情沒那麼簡單。',
-  },
-};
 
 export type SettingsSectionType =
   | "account"
