@@ -161,8 +161,11 @@ export const CACHE_CONFIG = {
   PASTE_DELAY_MS: 50, // Delay before paste simulation to allow clipboard to settle
 } as const;
 
-// OpenWhispr Cloud API
-export const OPENWHISPR_API_URL = (env.VITE_OPENWHISPR_API_URL as string) || "";
+// OpenWhispr Cloud API. Release builds inject this value, but local/custom
+// builds should still match the documented default instead of leaving signed-in
+// users unable to resolve workspace policy.
+export const OPENWHISPR_API_URL =
+  (env.VITE_OPENWHISPR_API_URL as string) || "https://api.openwhispr.com";
 
 // Retry Configuration
 export const RETRY_CONFIG = {

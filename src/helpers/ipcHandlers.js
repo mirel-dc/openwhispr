@@ -5178,7 +5178,7 @@ class IPCHandlers {
       process.env.OPENWHISPR_API_URL ||
       process.env.VITE_OPENWHISPR_API_URL ||
       runtimeEnv.VITE_OPENWHISPR_API_URL ||
-      "";
+      "https://api.openwhispr.com";
 
     const getAuthUrl = () =>
       process.env.AUTH_URL ||
